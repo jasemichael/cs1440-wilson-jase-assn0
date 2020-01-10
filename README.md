@@ -8,6 +8,8 @@
 
 *Note: this file is a placeholder for your own notes.  When seeking help from the TAs or tutors replace the text in this file with a description of your problem and push it to your repository on GitLab*
 
+Thanks grader
+
 ## Overview
 
 As your first official coding project at DuckieCorp, you are to write a program to encode/decode sensitive messages using the Caesar cipher. Using the Caesar cipher was the customer's idea (the account representative didn't have the heart to point out how bad of an idea this is). At any rate, DuckieCorp project management has decided that this is the perfect project for you to get your feet wet.
