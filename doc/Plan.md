@@ -12,16 +12,20 @@ This function encompasses the classes and functions used to build the Caesar Cip
 main() will regulate the flow and control of the program. 
 ## Menu
 The menu will be created as the Menu class. The menu acts as a terminal.
-* A display method will be used to show the user options and essentially act as a guide.
-* A prompt method will be used to capture input.
-* A run method will run the desired command, catching any errors that may occur
-* The class won't require data members.
+* Data Members:
+    * command holds the user's selected command. The command resets to None after every execution
+* Methods:
+    * A display method will be used to show the user options and essentially act as a guide.
+    * A prompt method will be used to capture input.
+    * A run method will run the desired command, catching any errors that may occur.
+    * A printf method is the actual method the class uses during the run phase.
 ## Cipher
  The Cipher class will be used to decode messages.
  * Data Members:
     * rotations holds an int of the amount of rotations
     * file holds a string value of the file that will be used to decode.
  * Methods:
+    * A constructor which initializes data members.
     * A getRotations method will prompt for the number of rotations.
     * A getFile method will prompt the user for file input.
      * A decode method will decode the message.
@@ -33,7 +37,9 @@ This idea of validation allows the process to be automated.
 > Tests include:
 >* validating the methods
 >* validating output based on input
-## Brutal Force
+## Logging
+* Display statement/expression output using print().
+## Brute Force
 This idea of validation requires plugging and checking if errors occur.
 * Input of non-alphabetic characters
 * Tested 10 times
