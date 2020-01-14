@@ -13,23 +13,26 @@ main() will regulate the flow and control of the program.
 ## Menu
 The menu will be created as the Menu class. The menu acts as a terminal.
 * Data Members:
-    * command holds the user's selected command. The command resets to None after every execution
+    * command holds the user's selected command. The command resets to None after execution.
 * Methods:
-    * A display method will be used to show the user options and essentially act as a guide.
-    * A prompt method will be used to capture input.
-    * A run method will run the desired command, catching any errors that may occur.
-    * A printf method is the actual method the class uses during the run phase.
+    * A display method will be used to show the user options and essentially act as the user's guide.
+    * A prompt method will be used to capture user's input.
+    * A run method will run the user's desired command.
+    * An askFile and askRotation will be used to receive input for filename and the amount of rotations. 
+    * A printf method instantiates the Cipher class and runs the decode.
 ## Cipher
  The Cipher class will be used to decode messages.
  * Data Members:
-    * rotations holds an int of the amount of rotations
-    * file holds a string value of the file that will be used to decode.
+    * rotations holds an int of the amount of rotations.
+    * file holds a string value of the name of the file that will be used to decode.
+    * text holds the decoded string text.
  * Methods:
     * A constructor which initializes data members.
     * A getRotations method will prompt for the number of rotations.
     * A getFile method will prompt the user for file input.
-     * A decode method will decode the message.
-     * A display method will show the results.
+    * A openFile method will manage opening the user's files and returning the opened file.
+    * A decode method will decode the message.
+    * A display method will show the decoded results.
 # 3. Implementation 
 # 4. Validation
 ## Unit Tests
@@ -41,5 +44,5 @@ This idea of validation allows the process to be automated.
 * Display statement/expression output using print().
 ## Brute Force
 This idea of validation requires plugging and checking if errors occur.
-* Input of non-alphabetic characters
-* Tested 10 times
+* Input of non-alphabetic characters into console.
+* Multiple times tested.

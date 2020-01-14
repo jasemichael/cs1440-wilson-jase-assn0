@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+from unittest import TestCase
 
 print("Pnrfne Pvcure!")
 
@@ -33,6 +34,7 @@ E)xit""")
         file = input("\nEnter the name of a file> ")
         try:
             fin = open(file,"r")
+            fin.close()
         except:
             print("\nThere was an error opening your file!")
             return False
@@ -46,10 +48,6 @@ E)xit""")
         while (rot > 25 or rot < 0):
             print("\nThat is not a valid rotation!")
             return False
-            ##rot = input("Rotation distance (0-25 or *)> ")
-            ##if rot == "*":
-              ##  rot = 25
-            ##rot = int(rot)
         return rot
 
     def printf(self):
@@ -57,8 +55,8 @@ E)xit""")
         if file:
             rot = self.askRotation()
             if rot or rot == 0:
-                for r in range(0, rot+1):
-                    print("\nRotation " + str(rot - r) + ":")
+                for r in range(rot+1):
+                    print("\nRotation " + str(r) + ":")
                     c = Cipher(file, r)
                     c.decode()
                     c.display()
@@ -76,7 +74,7 @@ class Cipher:
     def getFile(self):
         return self.__file
 
-    def setFile(self):
+    def openFile(self):
         fin = open(self.__file, "r")
         return fin
 
@@ -85,7 +83,7 @@ class Cipher:
         UPPER = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
         print('Decoding...')
         char = " "
-        file = self.setFile()
+        file = self.openFile()
         while char != "":
             char = file.read(1)
             if char == "":
