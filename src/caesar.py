@@ -31,16 +31,20 @@ E)xit""")
 
     def askFile(self):
         file = input("\nEnter the name of a file> ")
-        # implement try catch
-        return file
+        try:
+            fin = open(file,"r")
+        except:
+            print("\nThere was an error opening your file!")
+            return False
+        return fin
 
     def askRotation(self):
         rot = input("Rotation distance (0-25 or *)> ")
         if rot == "*":
             rot = 25
         rot = int(rot)
-        while (rot > 25 and rot < 0):
-            print("That is not a valid rotation!")
+        while (rot > 25 or rot < 0):
+            print("\nThat is not a valid rotation!")
             rot = input("Rotation distance (0-25 or *)> ")
             if rot == "*":
                 rot = 25
@@ -49,14 +53,18 @@ E)xit""")
 
     def printf(self):
         file = self.askFile()
-        rot = self.askRotation()
-        c = Cipher(file, rot)
-        c.decode()
+        if file:
+            rot = self.askRotation()
+            c = Cipher(file, rot)
+            c.decode()
+            c.display()
+            del c
 
 class Cipher:
     def __init__(self, file, rot):
         self.__file = file
         self.__rotations = rot
+        self.__text = ""
 
     def getRotations(self):
         return self.__rotations
@@ -67,10 +75,31 @@ class Cipher:
     def decode(self):
         LOWER = "abcdefghijklmnopqrstuvwxyz"
         UPPER = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-        print(f'Decoding {self.getFile()}...')
+        print('Decoding...')
+        char = " "
+        while char != "":
+            char = self.getFile().read(1)
+            if char in LOWER: #char is lowercase
+                index = LOWER.find(char)
+                if (index + self.getRotations()) > 25: #reset index
+                    index = (index + self.getRotations()) - 25
+                else:
+                    index += self.getRotations()
+                self.__text += LOWER[index]
+            elif char in UPPER: #char is uppercase
+                index = UPPER.find(char)
+                if (index + self.getRotations()) > 25: #reset index
+                    index = (index + self.getRotations()) - 25
+                else:
+                    index += self.getRotations()
+                self.__text += UPPER[index]
+            else: #character is not alpha
+                self.__text += char
+        self.getFile().close()
+        print(self.__text)
 
     def display(self):
-        pass
+        print(self.__text)
 
 def main():
     m = Menu()
